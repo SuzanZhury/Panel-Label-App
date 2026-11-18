@@ -18,6 +18,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" crossorigin href="/Panel-Label-App/assets/index-G9ii0gf-.css">
     <script>history.replaceState(null, "", "/");</script>
+    <script>
+      // Redirect the Excel template request to the repo path
+      var _fetch = window.fetch;
+      window.fetch = function (url, opts) {
+        if (String(url).indexOf("panel-label-template.xlsx") !== -1) {
+          url = "/Panel-Label-App/panel-label-template.xlsx";
+        }
+        return _fetch.call(this, url, opts);
+      };
+      // Redirect the logo image to the repo path
+      new MutationObserver(function () {
+        document.querySelectorAll('img[src="/panel-logo.png"]').forEach(function (img) {
+          img.src = "/Panel-Label-App/panel-logo.png";
+        });
+      }).observe(document.documentElement, { childList: true, subtree: true });
+    </script>
     <script type="module" crossorigin src="/Panel-Label-App/assets/index-igq9XYue.js"></script>
   </head>
   <body>
